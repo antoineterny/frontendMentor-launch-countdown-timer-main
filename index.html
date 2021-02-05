@@ -22,22 +22,96 @@
   <body>
     <h1>We're launching soon</h1>
     <div class="countdown">
-      <div class="counter">
-        <div class="card card-top">
-          <div class="card-top overlay"></div>
-          <div class="card-top-border"></div>
-          <div class="figures">23</div>
+      <div class="counter" id="days-counter">
+        <div class="card__face top-fixed">
+          <div class="dark-border"></div>
+          <div class="figures-top days-low">07</div>
         </div>
-        <div class="card card-bottom">
-          <div class="card-bottom-border"></div>
-          <div class="figures">23</div>
+        <div class="moving-card">
+          <div class="card__face card__face--front">
+            <div class="dark-border"></div>
+            <div class="figures-top days-high">08</div>
+          </div>
+          <div class="card__face card__face--back">
+            <div class="light-border"></div>
+            <div class="figures-bottom days-low">07</div>
+          </div>
+        </div>
+        <div class="card__face bottom-fixed">
+          <div class="light-border"></div>
+          <div class="figures-bottom days-high">08</div>
+        </div>
+      </div>
+
+      <div class="counter" id="hours-counter">
+        <div class="card__face top-fixed">
+          <div class="dark-border"></div>
+          <div class="figures-top hours-low">21</div>
+        </div>
+        <div class="moving-card">
+          <div class="card__face card__face--front">
+            <div class="dark-border"></div>
+            <div class="figures-top hours-high">22</div>
+          </div>
+          <div class="card__face card__face--back">
+            <div class="light-border"></div>
+            <div class="figures-bottom hours-low">21</div>
+          </div>
+        </div>
+        <div class="card__face bottom-fixed">
+          <div class="light-border"></div>
+          <div class="figures-bottom hours-high">22</div>
+        </div>
+      </div>
+
+      <div class="counter" id="minutes-counter">
+        <div class="card__face top-fixed">
+          <div class="dark-border"></div>
+          <div class="figures-top minutes-low">55</div>
+        </div>
+        <div class="moving-card">
+          <div class="card__face card__face--front">
+            <div class="dark-border"></div>
+            <div class="figures-top minutes-high">56</div>
+          </div>
+          <div class="card__face card__face--back">
+            <div class="light-border"></div>
+            <div class="figures-bottom minutes-low">55</div>
+          </div>
+        </div>
+        <div class="card__face bottom-fixed">
+          <div class="light-border"></div>
+          <div class="figures-bottom minutes-high">56</div>
+        </div>
+      </div>
+
+      <div class="counter" id="seconds-counter">
+        <div class="card__face top-fixed">
+          <div class="dark-border"></div>
+          <div class="figures-top seconds-low">40</div>
+        </div>
+        <div class="moving-card">
+          <div class="card__face card__face--front">
+            <div class="dark-border"></div>
+            <div class="figures-top seconds-high">41</div>
+          </div>
+          <div class="card__face card__face--back">
+            <div class="light-border"></div>
+            <div class="figures-bottom seconds-low">40</div>
+          </div>
+        </div>
+        <div class="card__face bottom-fixed">
+          <div class="light-border"></div>
+          <div class="figures-bottom seconds-high">41</div>
         </div>
       </div>
     </div>
-    <!-- Days
-      Hours
-      Minutes
-      Seconds -->
+    <div class="legend">
+      <h5>Days</h5>
+      <h5>Hours</h5>
+      <h5>Minutes</h5>
+      <h5>Seconds</h5>
+    </div>
     <div class="sky"></div>
     <img src="./images/pattern-hills.svg" alt="" class="hills" />
 
@@ -53,5 +127,12 @@
         Coded by <a href="https://github.com/antoineterny" target="_blank">Antoine Terny</a>.
       </div>
     </footer>
+
+    <script>
+      const movingCards = document.querySelectorAll(".moving-card")
+      document.querySelector("body").onclick = () =>
+        movingCards.forEach(card => card.classList.toggle("flip"))
+    </script>
+    <script src="app.js"></script>
   </body>
 </html>

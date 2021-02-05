@@ -1,0 +1,102 @@
+.countdown {
+  width: 688px;
+  height: 140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  perspective: 1000px;
+}
+
+.counter {
+  width: 148px;
+  height: 140px;
+  position: relative;
+}
+
+.card {
+  width: 100%;
+  height: 50%;
+  border-radius: 6px;
+  background-color: var(--dark-desaturated-blue);
+  position: relative;
+  overflow: hidden;
+  font-size: 80px;
+  letter-spacing: -0.025em;
+  color: var(--soft-red);
+}
+
+.card-top .figures {
+  transform: translateY(16px);
+}
+
+.card-top::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: -6px;
+  background-color: var(--very-dark-blue);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.card-top::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  background-color: var(--very-dark-blue);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.card-bottom .figures {
+  transform: translateY(-54px);
+}
+
+.card-bottom::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  background-color: var(--very-dark-blue);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.card-bottom::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  background-color: var(--very-dark-blue);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.card-top-border {
+  width: calc(100% - 12px);
+  height: 1px;
+  position: absolute;
+  left: 6px;
+  bottom: 0;
+  mix-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 9;
+}
+
+.card-bottom-border {
+  width: calc(100% - 12px);
+  height: 2px;
+  position: absolute;
+  left: 6px;
+  top: 0;
+  mix-blend-mode: lighten;
+  opacity: 0.66;
+  background-color: rgba(255, 255, 255, 0.03);
+  z-index: 9;
+}
+/*# sourceMappingURL=countdown_OLD.css.map */
