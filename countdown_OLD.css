@@ -2,9 +2,14 @@
   width: 688px;
   height: 140px;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  perspective: 1000px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
 .counter {
@@ -26,7 +31,8 @@
 }
 
 .card-top .figures {
-  transform: translateY(16px);
+  -webkit-transform: translateY(16px);
+          transform: translateY(16px);
 }
 
 .card-top::before {
@@ -52,7 +58,8 @@
 }
 
 .card-bottom .figures {
-  transform: translateY(-54px);
+  -webkit-transform: translateY(-54px);
+          transform: translateY(-54px);
 }
 
 .card-bottom::before {
