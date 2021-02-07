@@ -1,4 +1,3 @@
-const tendays = 10 * 24 * 60 * 60
 let timeLeft = 8 * (24 * 60 * 60) + 23 * (60 * 60) + 55 * 60 + 44
 
 const dhms = time => {
@@ -8,13 +7,7 @@ const dhms = time => {
 	const ms = time % (60 * 60)
 	const minutes = Math.floor(ms / 60)
 	const seconds = time % 60
-
-	return {
-		days: days,
-		hours: hours,
-		minutes: minutes,
-		seconds: seconds
-	}
+	return { days, hours, minutes, seconds }
 }
 
 const daysHigh = document.querySelectorAll(".days-high")
@@ -33,63 +26,64 @@ const secondsHigh = document.querySelectorAll(".seconds-high")
 const secondsLow = document.querySelectorAll(".seconds-low")
 const secondsCard = document.querySelector("#seconds-counter .moving-card")
 
-daysHigh.forEach(div => (div.innerText = dhms(timeLeft).days))
-hoursHigh.forEach(div => (div.innerText = dhms(timeLeft).hours))
-minutesHigh.forEach(div => (div.innerText = dhms(timeLeft).minutes))
-secondsHigh.forEach(div => (div.innerText = dhms(timeLeft).seconds))
+const t = dhms(timeLeft)
+daysHigh.forEach(div => (div.innerHTML = t.days < 10 ? "0" + t.days : t.days))
+hoursHigh.forEach(div => (div.innerHTML = t.hours < 10 ? "0" + t.hours : t.hours))
+minutesHigh.forEach(div => (div.innerHTML = t.minutes < 10 ? "0" + t.minutes : t.minutes))
+secondsHigh.forEach(div => (div.innerHTML = t.seconds < 10 ? "0" + t.seconds : t.seconds))
 
 let timerID = setInterval(function () {
-	const t = dhms(timeLeft)
-	console.log(t)
+  let t = dhms(timeLeft)
+  console.log(t)
 
 	secondsCard.classList.add("flip")
-	secondsHigh.forEach(div => (div.innerText = t.seconds))
+	secondsHigh.forEach(div => (div.innerHTML = t.seconds))
 
 	if (t.seconds === 0) {
-		secondsLow.forEach(div => (div.innerText = 59))
+		secondsLow.forEach(div => (div.innerHTML = 59))
 		setTimeout(() => {
-			secondsHigh.forEach(div => (div.innerText = 59))
+			secondsHigh.forEach(div => (div.innerHTML = 59))
 			secondsCard.classList.remove("flip")
 		}, 900)
 		minutesCard.classList.add("flip")
-		minutesHigh.forEach(div => (div.innerText = t.minutes))
+		minutesHigh.forEach(div => (div.innerHTML = t.minutes))
 
 		if (t.minutes === 0) {
-			minutesLow.forEach(div => (div.innerText = 59))
+			minutesLow.forEach(div => (div.innerHTML = 59))
 			setTimeout(() => {
-				minutesHigh.forEach(div => (div.innerText = 59))
+				minutesHigh.forEach(div => (div.innerHTML = 59))
 				minutesCard.classList.remove("flip")
 			}, 900)
 			hoursCard.classList.add("flip")
-			hoursHigh.forEach(div => (div.innerText = t.hours))
+			hoursHigh.forEach(div => (div.innerHTML = t.hours))
 
 			if (t.hours === 0) {
-				hoursLow.forEach(div => (div.innerText = 23))
+				hoursLow.forEach(div => (div.innerHTML = 23))
 				setTimeout(() => {
-					hoursHigh.forEach(div => (div.innerText = 23))
+					hoursHigh.forEach(div => (div.innerHTML = 23))
 					hoursCard.classList.remove("flip")
 				}, 900)
 				daysCard.classList.add("flip")
-				daysHigh.forEach(div => (div.innerText = t.days))
-				daysLow.forEach(div => (div.innerText = t.days - 1))
+				daysHigh.forEach(div => (div.innerHTML = t.days))
+				daysLow.forEach(div => (div.innerHTML = t.days - 1))
 			} else {
-				hoursLow.forEach(div => (div.innerText = t.hours - 1))
+				hoursLow.forEach(div => (div.innerHTML = t.hours - 1))
 				setTimeout(() => {
-					hoursHigh.forEach(div => (div.innerText = t.hours - 1))
+					hoursHigh.forEach(div => (div.innerHTML = t.hours - 1))
 					hoursCard.classList.remove("flip")
 				}, 900)
 			}
 		} else {
-			minutesLow.forEach(div => (div.innerText = t.minutes - 1))
+			minutesLow.forEach(div => (div.innerHTML = t.minutes - 1))
 			setTimeout(() => {
-				minutesHigh.forEach(div => (div.innerText = t.minutes - 1))
+				minutesHigh.forEach(div => (div.innerHTML = t.minutes - 1))
 				minutesCard.classList.remove("flip")
 			}, 900)
 		}
 	} else {
-		secondsLow.forEach(div => (div.innerText = t.seconds - 1))
+		secondsLow.forEach(div => (div.innerHTML = t.seconds - 1))
 		setTimeout(() => {
-			secondsHigh.forEach(div => (div.innerText = t.seconds - 1))
+			secondsHigh.forEach(div => (div.innerHTML = t.seconds - 1))
 			secondsCard.classList.remove("flip")
 		}, 900)
 	}
