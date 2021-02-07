@@ -23,6 +23,7 @@
 body {
   width: 100%;
   min-height: 100vh;
+  min-width: 375px;
   background-color: var(--very-dark-blue);
   font-family: "Red Hat Text", sans-serif;
   color: var(--grayish-blue);
@@ -103,12 +104,11 @@ h1 {
 }
 .card__face {
   position: absolute;
-  width: 148px;
-  height: 70px;
-  border-radius: 6px;
+  width: 100%;
+  height: 100%;
   background-color: var(--dark-desaturated-blue);
   color: var(--soft-red);
-  line-height: 130px;
+  line-height: 140px;
   letter-spacing: -0.025em;
   text-align: center;
   font-weight: bold;
@@ -147,6 +147,7 @@ h1 {
 .card__face--front {
   background-color: var(--dark-desaturated-blue-d);
   color: var(--soft-red-d);
+  border-radius: 6px 6px 0 0;
   &::before {
     content: "";
     position: absolute;
@@ -172,6 +173,7 @@ h1 {
 }
 .bottom-fixed,
 .card__face--back {
+  border-radius: 0 0 6px 6px;
   &::before {
     content: "";
     position: absolute;
@@ -195,32 +197,31 @@ h1 {
     z-index: 2;
   }
 }
-.figures-top {
-  transform: translateY(6px);
-}
+// .figures-top {
+//   transform: translateY(6px);
+// }
 
 .card__face--back {
-  // background: cadetblue;
   transform: rotateX(180deg);
 }
 .figures-bottom {
-  transform: translateY(-64px);
+  transform: translateY(-70px);
 }
 
 .top-fixed {
   position: absolute;
-  width: 148px;
-  height: 70px;
+  width: 100%;
+  height: 100%;
 }
 .bottom-fixed {
-  width: 148px;
-  height: 70px;
+  width: 100%;
+  height: 100%;
   z-index: 0;
 }
 
 .moving-card {
-  width: 148px;
-  height: 70px;
+  width: 100%;
+  height: 100%;
   transform-style: preserve-3d;
   position: relative;
   transform-origin: bottom;
@@ -229,14 +230,10 @@ h1 {
 }
 
 .moving-card.flip {
-  transition: transform 0.6s cubic-bezier(0.8, 0, 1, 0.8);
-  // transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.8, 0, 1, 0.3);
   transform: rotateX(-180deg);
 }
 
-////////////////
-// LEGEND  //
-////////////////
 .legend {
   width: 688px;
   margin: 25px auto;
@@ -251,5 +248,86 @@ h1 {
     line-height: 20px;
     text-align: center;
     letter-spacing: 0.34em;
+  }
+}
+
+////////////////
+// RESPONSIVE  //
+////////////////
+@media (max-width: 800px) {
+  h1 {
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.34em;
+    padding: 142px 42px 54px;
+  }
+  .countdown {
+    width: 327px;
+    height: 70px;
+    perspective: 600px;
+  }
+  .counter {
+    width: 66px;
+    height: 35px;
+  }
+  .card__face {
+    line-height: 70px;
+    font-size: 36px;
+  }
+  .figures-bottom {
+    transform: translateY(-35px);
+  }
+  .dark-border {
+    width: calc(100% - 6px);
+    left: 3px;
+  }
+  .light-border {
+    width: calc(100% - 6px);
+    left: 3px;
+  }
+  .top-fixed,
+  .card__face--front {
+    &::before {
+      content: "";
+      left: -3px;
+      bottom: -3px;
+      width: 6px;
+      height: 6px;
+    }
+    &::after {
+      content: "";
+      right: -3px;
+      bottom: -3px;
+      width: 6px;
+      height: 6px;
+    }
+  }
+  .bottom-fixed,
+  .card__face--back {
+    &::before {
+      content: "";
+      left: -3px;
+      top: -3px;
+      width: 6px;
+      height: 6px;
+    }
+    &::after {
+      content: "";
+      right: -3px;
+      top: -3px;
+      width: 6px;
+      height: 6px;
+    }
+  }
+  .legend {
+    width: 327px;
+    margin: 13px auto;
+    h5 {
+      width: 71px;
+      font-size: 7px;
+      line-height: 20px;
+      letter-spacing: 0.42em;
+    }
   }
 }
